@@ -1,0 +1,10 @@
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('The amazing fantasy #15','Marvel','Regular',15000);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('Joker','DC','Limitada',32500);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('The infinity gauntlet','Marvel','Limitada',29999);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('FlashPoint','DC','Regular',16000);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('Civil War','Marvel','Regular',10900);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('Absolute Carnage','Marvel','Limitada',25000);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('Damian son of Batman','DC','Regular',4000);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('Infinite Crisis','DC','Limitada',45000);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('John Constantine Hellblazer original sins','DC','Regular',13900);
+INSERT INTO comics (nombre_comic, universo, edicion, precio) VALUES('The new Teen Titans','DC','Limitada',59000);
