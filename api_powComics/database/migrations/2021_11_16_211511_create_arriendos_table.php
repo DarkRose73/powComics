@@ -14,15 +14,14 @@ class CreateArriendosTable extends Migration
     public function up()
     {
         Schema::create('arriendos', function (Blueprint $table) {
-            //TODO Como hacer la clave compuesta desde 2 tablas diferentes
-            $table->id();
+            //TODO Como hacer la clave compuesta desde 2 tablas diferentes;
 
             $table->string('rut',10);
             $table->unsignedBigInteger('id_comic');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
             $table->timestamps();
-
+            $table->primary(['rut','id_comic']);
             $table->foreign('rut')->references('rut')->on('users')->onDelete('cascade');
             $table->foreign('id_comic')->references('id')->on('comics')->onDelete('cascade');
         });
