@@ -21,11 +21,47 @@ class HomePage extends StatelessWidget {
               fontStyle: FontStyle.italic),
         ),
       ),
+      backgroundColor: Color.fromRGBO(255, 6, 0, 100),
       body: Center(
         child: Container(
-          height: 300,
+          margin: const EdgeInsets.all(50),
+          padding: const EdgeInsets.all(30),
+          decoration: BoxDecoration(
+              color: Colors.yellowAccent,
+              border: Border.all(color: Colors.yellowAccent),
+              borderRadius: BorderRadius.circular(10.0)),
+          height: 540,
           width: 300,
-          child: Image(image: AssetImage('assets/images/spiderman-2099.jpg')),
+          child: ListView(children: [
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '¡¡Proximamente!!',
+                    style: TextStyle(
+                        fontFamily: 'ComicNeue',
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            ),
+            Spacer(),
+            Image(
+              image: AssetImage('assets/images/spider-verse-vol-1.jpg'),
+            ),
+            Text(
+              'Con descuento navideño.. 👀',
+              style: TextStyle(
+                  fontFamily: 'ComicNeue',
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.normal),
+            ),
+          ]),
         ),
       ),
       drawer: Drawer(
