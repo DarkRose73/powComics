@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:pow_comics/pages/usuarios_agregar.dart';
+import 'package:pow_comics/pages/usuarios_editar.dart';
 import 'package:pow_comics/provider/powComics_provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -38,42 +39,61 @@ class _DrawerUsuariosState extends State<DrawerUsuarios> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
                     return Slidable(
-                      actionPane: SlidableDrawerActionPane(),
-                      actionExtentRatio: 0.25,
                       child: ListTile(
                         leading: Icon(Icons.people_alt_outlined),
                         title: Text(snapshot.data[index]['nombre_usuario']),
                       ),
-                      secondaryActions: <Widget>[
-                        IconSlideAction(
-                          caption: 'Borrar',
-                          color: Colors.red,
-                          icon: MdiIcons.trashCan,
-                          onTap: () {
-                            confirmDialog(context,
-                                    snapshot.data[index]['nombre_usuario'])
-                                .then((confirma) {
-                              if (confirma) {
-                                var nombre =
-                                    snapshot.data[index]['nombre_usuario'];
-                                setState(() {
-                                  provider
-                                      .usuariosBorrar(
-                                          snapshot.data[index]['rut'])
-                                      .then((borradoExitoso) {
-                                    if (!borradoExitoso) {
-                                      _showSnackbar('Ha ocurrido un problema');
-                                    } else {
-                                      _showSnackbar(
-                                          'Usuario $nombre ha sido eliminado');
-                                    }
+                      endActionPane: ActionPane(
+                        motion: StretchMotion(),
+                        children: [
+                          SlidableAction(
+                            onPressed: (context) {
+                              confirmDialog(context,
+                                      snapshot.data[index]['nombre_usuario'])
+                                  .then((confirma) {
+                                if (confirma) {
+                                  var nombre =
+                                      snapshot.data[index]['nombre_usuario'];
+                                  setState(() {
+                                    provider
+                                        .usuariosBorrar(
+                                            snapshot.data[index]['rut'])
+                                        .then((borradoExitoso) {
+                                      if (!borradoExitoso) {
+                                        _showSnackbar(
+                                            'Ha ocurrido un problema');
+                                      } else {
+                                        _showSnackbar(
+                                            'Usuario $nombre ha sido eliminado');
+                                      }
+                                    });
                                   });
-                                });
-                              }
-                            });
-                          },
-                        )
-                      ],
+                                }
+                              });
+                            },
+                            backgroundColor: Colors.red,
+                            icon: MdiIcons.trashCan,
+                            label: 'Borrar',
+                          ),
+                          SlidableAction(
+                            onPressed: (context) {
+                              MaterialPageRoute route = MaterialPageRoute(
+                                builder: (context) => UsuariosEditar(
+                                  rut: snapshot.data[index]['rut'],
+                                  nombre_usuario: snapshot.data[index]
+                                      ['nombre_usuario'],
+                                  celular: snapshot.data[index]['celular'],
+                                ),
+                              );
+                              Navigator.push(context, route)
+                                  .then((value) => {setState(() {})});
+                            },
+                            backgroundColor: Color(0xFFB8DB1D),
+                            icon: MdiIcons.update,
+                            label: 'Editar',
+                          ),
+                        ],
+                      ),
                     );
                   },
                 );
