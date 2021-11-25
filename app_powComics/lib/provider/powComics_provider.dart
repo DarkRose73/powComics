@@ -98,7 +98,7 @@ class PowComicsProvider {
     return json.decode(respuesta.body);
   }
 
-  boletasBorrar(String rut, int id_comic) async {
+  arriendosBorrar(String rut, int id_comic) async {
     var uri = Uri.parse('$apiURL/arriendos/$rut&$id_comic');
     var respuesta = await http.delete(uri);
     return respuesta.statusCode == 200;
@@ -113,5 +113,50 @@ class PowComicsProvider {
     } else {
       return [];
     }
+  }
+
+  Future<LinkedHashMap<String, dynamic>> comicsAgregar(
+      String nombreComic, String universo, String edicion, int precio) async {
+    //, String universo, int precio, String edicion
+    var url = Uri.parse('$apiURL/comics');
+    var respuesta = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Accept': 'application/json',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'nombre_comic': nombreComic,
+          'universo': universo,
+          'edicion': edicion,
+          'precio': precio,
+        }));
+    return json.decode(respuesta.body);
+  }
+
+  Future<LinkedHashMap<String, dynamic>> comicsEditar(int id,
+      String nombreComic, String universo, String edicion, int precio) async {
+    var uri = Uri.parse('$apiURL/comics/$id');
+    var respuesta = await http.put(
+      uri,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'id': id,
+        'nombre_comic': nombreComic,
+        'universo': universo,
+        'edicion': edicion,
+        'precio': precio,
+      }),
+    );
+
+    return json.decode(respuesta.body);
+  }
+
+  comicsBorrar(int id) async {
+    var uri = Uri.parse('$apiURL/comics/$id');
+    var respuesta = await http.delete(uri);
+    return respuesta.statusCode == 200;
   }
 }

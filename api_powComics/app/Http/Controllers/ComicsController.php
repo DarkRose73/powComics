@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicsRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class ComicsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicsRequest $request)
     {
         $comic = new Comic();
         $comic->nombre_comic = $request->nombre_comic;
@@ -54,7 +55,7 @@ class ComicsController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $comic->nombre = $request->nombre;
+        $comic->nombre_comic = $request->nombre_comic;
         $comic->universo = $request->universo;
         $comic->edicion=$request->edicion;
         $comic->precio=$request->precio;

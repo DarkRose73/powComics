@@ -14,7 +14,14 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        return Arriendo::all();
+        $arriendos = Arriendo::all();
+        foreach($arriendos as $arriendo){
+            $arriendo->load('comic');
+        }
+        foreach($arriendos as $arriendo){
+            $arriendo->load('user');
+        }
+        return $arriendos;
     }
 
     /**
@@ -28,8 +35,7 @@ class ArriendosController extends Controller
         $arriendo = new Arriendo();
         $arriendo->rut = $request->rut;
         $arriendo->id_comic = $request->id_comic;
-        $arriendo->fecha_inicio = $request->fecha_inicio;
-        $arriendo->fecha_termino= $request->fecha_termino;
+        $arriendo->fecha_termino = $request->fecha_termino;
         $arriendo->save();
         return $arriendo;        
     }
@@ -56,8 +62,7 @@ class ArriendosController extends Controller
     {
         $arriendo->rut = $request->rut;
         $arriendo->id_comic = $request->id_comic;
-        $arriendo->fecha_inicio = $request->fecha_inicio;
-        $arriendo->fecha_termino= $request->fecha_termino;
+        $arriendo->fecha_termino = $request->fecha_termino;
         $arriendo->save();
         return $arriendo;  
     }

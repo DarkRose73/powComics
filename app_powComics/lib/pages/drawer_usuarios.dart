@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:pow_comics/pages/usuarios_agregar.dart';
 import 'package:pow_comics/pages/usuarios_editar.dart';
@@ -7,6 +5,7 @@ import 'package:pow_comics/provider/powComics_provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class DrawerUsuarios extends StatefulWidget {
   const DrawerUsuarios({Key? key}) : super(key: key);
@@ -22,6 +21,14 @@ class _DrawerUsuariosState extends State<DrawerUsuarios> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Usuarios'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              setState(() {});
+            },
+            child: Text('ACTUALIZAR'),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -31,7 +38,15 @@ class _DrawerUsuariosState extends State<DrawerUsuarios> {
               builder: (context, AsyncSnapshot snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: LiquidCircularProgressIndicator(
+                      value: 0.6,
+                      valueColor: AlwaysStoppedAnimation(Colors.yellowAccent),
+                      backgroundColor: Colors.orangeAccent,
+                      borderColor: Colors.black,
+                      borderWidth: 2.0,
+                      direction: Axis.vertical,
+                      center: Text("Cargando Usuarios"),
+                    ),
                   );
                 }
                 return ListView.separated(
@@ -88,7 +103,7 @@ class _DrawerUsuariosState extends State<DrawerUsuarios> {
                               Navigator.push(context, route)
                                   .then((value) => {setState(() {})});
                             },
-                            backgroundColor: Color(0xFFB8DB1D),
+                            backgroundColor: Colors.yellow,
                             icon: MdiIcons.update,
                             label: 'Editar',
                           ),

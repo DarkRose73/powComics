@@ -19,6 +19,14 @@ class _DrawerArriendosState extends State<DrawerArriendos> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Arriendos'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              setState(() {});
+            },
+            child: Text('ACTUALIZAR'),
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,
@@ -47,10 +55,10 @@ class _DrawerArriendosState extends State<DrawerArriendos> {
                         ),
                       ),
                       DataCell(
-                        Text(boleta['rut']),
+                        Text(boleta['user'][0]['nombre_usuario']),
                       ),
                       DataCell(
-                        Text(boleta['id_comic'].toString()),
+                        Text(boleta['comic'][0]['nombre_comic']),
                       ),
                     ],
                   );
