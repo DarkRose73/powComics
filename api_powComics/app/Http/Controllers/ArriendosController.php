@@ -48,6 +48,9 @@ class ArriendosController extends Controller
      */
     public function show(Arriendo $arriendo)
     {
+        $arriendo->load('comic');
+        $arriendo->load('user');
+
         return $arriendo;
     }
 

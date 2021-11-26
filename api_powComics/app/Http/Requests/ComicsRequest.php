@@ -32,13 +32,13 @@ class ComicsRequest extends FormRequest
     }
     public function messages(){
         return[
-            'nombre_comic.required' => 'Debe ingresar el nombre del comic pajaron',
-            'nombre_comic.min'=>'Debe tener minimo de 3 caracteres pelmazo',
-            'nombre_comic.unique' => 'El nombre del comic :input ya existe en el sistema ridiculo',
+            'nombre_comic.required' => 'Debe ingresar el nombre del comic',
+            'nombre_comic.min'=>'Debe tener minimo de 3 caracteres',
+            'nombre_comic.unique' => 'El nombre del comic :input ya existe en el sistema',
             'nombre_comic.max'=>'Debe tener maximo de 100 caracteres',
-            'precio.required' => 'Debe ingresar el precio del comic pajaron',
-            'precio.min'=>'Debe tener minimo de 4 digitos pelmazo',
-            'precio.max'=>'Debe tener maximo de 6 digitos, no infle precios',
+            'precio.required' => 'Debe ingresar el precio del comic',
+            'precio.min'=>'Debe tener minimo de 4 digitos',
+            'precio.max'=>'Debe tener maximo de 6 digitos',
             'universo.required' => 'Debe ingresar a que universo pertenece',
             'edicion.required' => 'Debe ingresar el tipo de edicion es el comic',
         ];

@@ -77,6 +77,12 @@ class PowComicsProvider {
     }
   }
 
+  Future<LinkedHashMap<String, dynamic>> getArriendo(int id) async {
+    var uri = Uri.parse('$apiURL/arriendos/$id');
+    var respuesta = await http.get(uri);
+    return json.decode(respuesta.body);
+  }
+
   Future<LinkedHashMap<String, dynamic>> arriendosAgregar(String rut,
       int id_comic, String fecha_inicio, String fecha_termino) async {
     var uri = Uri.parse('$apiURL/arriendos');
@@ -98,8 +104,8 @@ class PowComicsProvider {
     return json.decode(respuesta.body);
   }
 
-  arriendosBorrar(String rut, int id_comic) async {
-    var uri = Uri.parse('$apiURL/arriendos/$rut&$id_comic');
+  arriendosBorrar(int id) async {
+    var uri = Uri.parse('$apiURL/arriendos/$id');
     var respuesta = await http.delete(uri);
     return respuesta.statusCode == 200;
   }
