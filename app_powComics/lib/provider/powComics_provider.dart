@@ -84,7 +84,7 @@ class PowComicsProvider {
   }
 
   Future<LinkedHashMap<String, dynamic>> arriendosAgregar(String rut,
-      int id_comic, String fecha_inicio, String fecha_termino) async {
+      int id_comic, String fecha_termino) async {
     var uri = Uri.parse('$apiURL/arriendos');
     var respuesta = await http.post(
       uri,
@@ -96,7 +96,6 @@ class PowComicsProvider {
         <String, dynamic>{
           'rut': rut,
           'id_comic': id_comic,
-          'fecha_inicio': fecha_inicio,
           'fecha_termino': fecha_termino,
         },
       ),

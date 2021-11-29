@@ -28,7 +28,7 @@ class _ComicsAgregarState extends State<ComicsAgregar> {
         ),
         body: Padding(
           padding: EdgeInsets.all(8),
-          child: ListView(
+          child: Column(
             children: [
               TextField(
                 controller: nombreCtrl,
@@ -81,7 +81,7 @@ class _ComicsAgregarState extends State<ComicsAgregar> {
               Container(
                 width: double.infinity,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.red),
+                  style: ElevatedButton.styleFrom(primary: Colors.orange),
                   child: Text("Agregar Comic"),
                   onPressed: () async {
                     var precio = precioCtrl.text.trim().isEmpty

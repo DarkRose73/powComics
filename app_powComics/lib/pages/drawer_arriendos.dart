@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
+import 'arriendos_agregar.dart';
+
 class DrawerArriendos extends StatefulWidget {
   const DrawerArriendos({Key? key}) : super(key: key);
 
@@ -23,10 +25,15 @@ class _DrawerArriendosState extends State<DrawerArriendos> {
         title: Text('Arriendos'),
         actions: [
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent.shade700,
+              textStyle: TextStyle(
+                  fontFamily: 'ComicNeue', fontWeight: FontWeight.bold),
+            ),
+            child: Text('ACTUALIZAR'),
             onPressed: () {
               setState(() {});
             },
-            child: Text('ACTUALIZAR'),
           ),
         ],
       ),
@@ -38,15 +45,7 @@ class _DrawerArriendosState extends State<DrawerArriendos> {
             builder: (context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: LiquidCircularProgressIndicator(
-                    value: 0.6,
-                    valueColor: AlwaysStoppedAnimation(Colors.yellowAccent),
-                    backgroundColor: Colors.orangeAccent,
-                    borderColor: Colors.black,
-                    borderWidth: 2.0,
-                    direction: Axis.vertical,
-                    center: Text("Cargando Arriendos"),
-                  ),
+                  child: CircularProgressIndicator(),
                 );
               }
               return DataTable(
@@ -97,8 +96,15 @@ class _DrawerArriendosState extends State<DrawerArriendos> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        backgroundColor: Colors.amber,
-        onPressed: () {},
+        backgroundColor: Colors.orange,
+        onPressed: () {
+          MaterialPageRoute route = MaterialPageRoute(
+            builder: (context) => ArriendoAgregar(),
+          );
+          Navigator.push(context, route).then((value) {
+            setState(() {});
+          });
+        },
       ),
     );
   }

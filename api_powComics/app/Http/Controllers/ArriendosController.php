@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArriendosRequest;
 use App\Models\Arriendo;
 use Illuminate\Http\Request;
 
 class ArriendosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $arriendos = Arriendo::all();
@@ -24,13 +20,7 @@ class ArriendosController extends Controller
         return $arriendos;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ArriendosRequest $request)
     {
         $arriendo = new Arriendo();
         $arriendo->rut = $request->rut;
@@ -40,12 +30,6 @@ class ArriendosController extends Controller
         return $arriendo;        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Arriendo  $Arriendo
-     * @return \Illuminate\Http\Response
-     */
     public function show(Arriendo $arriendo)
     {
         $arriendo->load('comic');
@@ -54,13 +38,6 @@ class ArriendosController extends Controller
         return $arriendo;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Arriendo  $Arriendo
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Arriendo $arriendo)
     {
         $arriendo->rut = $request->rut;
@@ -70,12 +47,6 @@ class ArriendosController extends Controller
         return $arriendo;  
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Arriendo  $Arriendo
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Arriendo $arriendo)
     {
         $arriendo->delete();

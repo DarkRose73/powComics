@@ -24,10 +24,15 @@ class _DrawerComicsState extends State<DrawerComics> {
         title: Text('Comics'),
         actions: [
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent.shade700,
+              textStyle: TextStyle(
+                  fontFamily: 'ComicNeue', fontWeight: FontWeight.bold),
+            ),
+            child: Text('ACTUALIZAR'),
             onPressed: () {
               setState(() {});
             },
-            child: Text('ACTUALIZAR'),
           ),
         ],
       ),

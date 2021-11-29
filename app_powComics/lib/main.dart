@@ -15,6 +15,13 @@ class MyApp extends StatelessWidget {
       title: 'POW Comics',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.redAccent,
+            titleTextStyle: TextStyle(
+              fontFamily: "ComicNeue",
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            )),
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the

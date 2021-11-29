@@ -23,10 +23,15 @@ class _DrawerUsuariosState extends State<DrawerUsuarios> {
         title: Text('Usuarios'),
         actions: [
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent.shade700,
+              textStyle: TextStyle(
+                  fontFamily: 'ComicNeue', fontWeight: FontWeight.bold),
+            ),
+            child: Text('ACTUALIZAR'),
             onPressed: () {
               setState(() {});
             },
-            child: Text('ACTUALIZAR'),
           ),
         ],
       ),
